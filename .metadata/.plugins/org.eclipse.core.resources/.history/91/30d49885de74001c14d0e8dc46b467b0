@@ -1,0 +1,5 @@
+package net.koreate.board;
+
+public class MysqlTest {
+
+}

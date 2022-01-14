@@ -1,0 +1,51 @@
+package net.koreate.board;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.inject.Inject;
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/context/root/root-context.xml"})
+public class MysqlTest {
+	
+	@Inject
+	DataSource ds;
+
+	@Test
+	public void test1() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("Driver 확인 완료");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void test2() {
+		Connection conn = null;
+		try {
+			conn = ds.getConnection();
+			System.out.println(conn+" 연결됐다 ^^");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("ds 연결 실패~");
+		}
+	}
+	
+	@Inject
+	SqlSessionFactory sqlSessionFactory;
+	
+	@Test
+	public void test3() {
+		SqlSession session = sqlSessionFactory.openSession();
+	}
+}

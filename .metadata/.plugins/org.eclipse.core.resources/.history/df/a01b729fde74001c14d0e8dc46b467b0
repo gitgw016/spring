@@ -1,0 +1,15 @@
+package net.koreate.board;
+
+import org.junit.Test;
+
+public class MysqlTest {
+
+	@Test
+	public void test1() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+}

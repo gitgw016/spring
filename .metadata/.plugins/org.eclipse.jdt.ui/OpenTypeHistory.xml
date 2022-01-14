@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=mvc_part02_controller/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;net.koreate.service{TestService.java[TestService" modifiers="513" timestamp="1641954951105"/>
+<typeInfo handle="=mvc_part02_controller/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;net.koreate.dao{TestDAO.java[TestDAO" modifiers="513" timestamp="1641955093816"/>
+<typeInfo handle="=mvc_part03_filter/C:\/Users\/kte001\/.m2\/repository\/javax\/servlet\/javax.servlet-api\/3.1.0\/javax.servlet-api-3.1.0.jar=/maven.pomderived=/true=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/=/maven.pomderived=/true=/=/org.eclipse.jst.component.nondependency=/=/=/maven.groupId=/javax.servlet=/=/maven.artifactId=/javax.servlet-api=/=/maven.version=/3.1.0=/=/maven.scope=/provided=/&lt;javax.servlet(Filter.class[Filter" modifiers="1537" timestamp="1641871447260"/>
+<typeInfo handle="=mvc_part03_filter/C:\/Program Files\/Java\/jre1.8.0_311\/lib\/rt.jar=/owner.project.facets=/java=/=/javadoc_location=/https:\/\/docs.oracle.com\/javase\/8\/docs\/api\/=/&lt;java.util.logging(Filter.class[Filter" modifiers="1537" timestamp="1634688515546"/>
+<typeInfo handle="=mvc_part03_test_db/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;net.koreate.test.dao{MemberDAO.java[MemberDAO" modifiers="513" timestamp="1642040313420"/>
+</typeInfoHistroy>

@@ -1,0 +1,86 @@
+package net.koreate.board.util;
+
+public class PageMaker {
+	private int totalCount;			// 전체 게시물의 수
+	private int startPage;			// 게시물의 화면에 보여질 시작페이지 번호
+	private int endPage;			// 게시물의 화면에 보여질 마지막페이지 번호
+	private int displayPageNum;		// 보여줄 페이지 개수
+	private int maxPage;			// 전체 페이지 개수
+	private boolean first;			// 첫페이지 버튼 활성화 여부
+	private boolean last;			// 마지막페이지 버튼 활성화 여부
+	private boolean prev;			// 이전 페이지 버튼 활성화 여부
+	private boolean next;			// 다음 페이지 버튼 활성화 여부
+	
+	private Criteria cri;			// 요청 페이지 정보
+	
+	private void calcPaging() {
+		// displayPageNum = 5
+		// 1~5 == [1][2][3][4][5]
+		endPage = (int)Math.ceil(cri.getPage()/(double)displayPageNum)*displayPageNum;
+		startPage = (endPage - displayPageNum)+1;
+		maxPage = (int)(Math.ceil(totalCount/(double)cri.getPerPageNum()));
+		if(endPage > maxPage) endPage = maxPage;
+		first = cri.getPage() != 1 ? true : false;
+		last = cri.getPage() < maxPage ? true : false;
+	}
+
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	public int getDisplayPageNum() {
+		return displayPageNum;
+	}
+
+	public void setDisplayPageNum(int displayPageNum) {
+		this.displayPageNum = displayPageNum;
+	}
+
+	public Criteria getCri() {
+		return cri;
+	}
+
+	public void setCri(Criteria cri) {
+		this.cri = cri;
+	}
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public int getMaxPage() {
+		return maxPage;
+	}
+
+	public boolean isFirst() {
+		return first;
+	}
+
+	public boolean isLast() {
+		return last;
+	}
+
+	public boolean isPrev() {
+		return prev;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	@Override
+	public String toString() {
+		return "PageMaker [totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage
+				+ ", displayPageNum=" + displayPageNum + ", maxPage=" + maxPage + ", first=" + first + ", last=" + last
+				+ ", prev=" + prev + ", next=" + next + ", cri=" + cri + "]";
+	}
+	
+}

@@ -1,0 +1,17 @@
+package net.koreate.board.service;
+
+import net.koreate.board.dao.Board;
+
+public interface BoardService {
+	// 게시글 삽입
+	String regist(Board board) throws Exception;
+	
+	// 게시글 상세보기
+	public Board read(int bno) throws Exception;
+	
+	// 게시글 수정
+	void modify(Board board) throws Exception;
+	
+	// 게시글 삭제
+	void remove(int bno) throws Exception;
+}

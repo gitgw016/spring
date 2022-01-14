@@ -1,0 +1,18 @@
+package net.koreate.board.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/board/*")
+public class BoardController {
+
+	//@RequestMapping(value="register",method=RequestMethod.GET)
+	@GetMapping("register")
+	public void register() throws Exception{
+		System.out.println("게시글 작성 페이지 요청");
+	}
+	
+	@PostMapping("register")
+}

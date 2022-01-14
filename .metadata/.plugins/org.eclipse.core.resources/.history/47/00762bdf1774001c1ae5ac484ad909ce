@@ -1,0 +1,27 @@
+package net.koreate.test.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import net.koreate.test.vo.MemberVO;
+
+@Repository
+public class MemberDAOImpl implements MemberDAO {
+
+	@Override
+	public void insertMember(MemberVO vo) {
+
+	}
+
+	@Override
+	public MemberVO readMember(String userid) {
+		return null;
+	}
+
+	@Override
+	public List<MemberVO> readMemberList() {
+		return null;
+	}
+
+}

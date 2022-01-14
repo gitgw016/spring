@@ -1,0 +1,10 @@
+package net.koreate.service;
+
+public class TestServiceImpl implements TestService {
+
+	@Override
+	public void testService(String message) {
+		System.out.println(message+" test service");
+	}
+
+}

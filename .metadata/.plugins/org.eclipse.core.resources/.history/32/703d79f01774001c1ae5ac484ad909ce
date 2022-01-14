@@ -1,0 +1,33 @@
+package net.koreate.test.dao;
+
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.sql.DataSource;
+
+import org.springframework.stereotype.Repository;
+
+import net.koreate.test.vo.MemberVO;
+
+@Repository
+public class MemberDAOImpl implements MemberDAO {
+	
+	@Inject
+	DataSource ds;
+
+	@Override
+	public void insertMember(MemberVO vo) {
+
+	}
+
+	@Override
+	public MemberVO readMember(String userid) {
+		return null;
+	}
+
+	@Override
+	public List<MemberVO> readMemberList() {
+		return null;
+	}
+
+}

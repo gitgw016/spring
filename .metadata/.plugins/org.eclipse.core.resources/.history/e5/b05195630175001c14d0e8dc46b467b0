@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>READ</h3>
+	<div>
+		<label>Title</label>
+		<input type="text" name="title" value="${board.title}" readonly/>
+	</div>
+	<div>
+		<label>Content</label>
+		<textarea name="content" readonly rows=3>${board.content}</textarea>
+	</div>
+	<div>
+		<label>Writer</label>
+		<input type="text" name="writer" required/>
+	</div>
+	<div>
+		<input type="submit" value="작성완료"/>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+package net.koreate.board;
+
+import org.junit.Test;
+
+public class MysqlTest {
+
+	@Test
+	public void test1() {
+		
+	}
+}

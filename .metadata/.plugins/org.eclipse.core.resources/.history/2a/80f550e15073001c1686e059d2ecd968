@@ -1,0 +1,10 @@
+package net.koreate.dao;
+
+public class TestDAOImpl implements TestDAO {
+
+	@Override
+	public void testDAO(String message) {
+
+	}
+
+}

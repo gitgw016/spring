@@ -1,0 +1,5 @@
+package net.koreate.test.dao;
+
+public interface MemberDAOMultiParam {
+	MemberVO readMemberWithPass(String userid, String userpass);
+}

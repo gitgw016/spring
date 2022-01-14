@@ -1,0 +1,8 @@
+package net.koreate.controller.doCon;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class DoController {
+
+}

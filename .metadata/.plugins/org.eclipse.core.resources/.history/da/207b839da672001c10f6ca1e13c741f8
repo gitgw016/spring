@@ -1,0 +1,18 @@
+package net.koreate.controller.home;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class SampleController {
+
+	public SampleController() {
+		System.out.println("SampleController 생성");
+	}
+	
+	@RequestMapping("product")
+	public void product(Model model) {
+		
+	}
+}

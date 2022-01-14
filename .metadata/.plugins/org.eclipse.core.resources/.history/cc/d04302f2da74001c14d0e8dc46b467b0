@@ -1,0 +1,5 @@
+package net.koreate.board.dao;
+
+public interface BoardDAO {
+
+}

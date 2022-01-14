@@ -1,0 +1,5 @@
+package net.koreate.test;
+
+public class MySQLConnectTest {
+
+}

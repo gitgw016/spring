@@ -1,0 +1,8 @@
+package net.koreate.board.service;
+
+import net.koreate.board.dao.Board;
+
+public interface BoardService {
+
+	String regist(Board board) throws Exception; 
+}
