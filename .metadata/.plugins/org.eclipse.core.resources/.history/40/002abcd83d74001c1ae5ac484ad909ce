@@ -1,7 +1,0 @@
-package net.koreate.test_java.config;
-
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
-
-}

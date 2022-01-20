@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="MysqlTest" project="mvc_part05_board" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="net.koreate.board.MysqlTest" time="0.796">
-    <testcase name="test1" classname="net.koreate.board.MysqlTest" time="0.0"/>
-    <testcase name="test2" classname="net.koreate.board.MysqlTest" time="0.796"/>
-  </testsuite>
-</testrun>

@@ -1,8 +1,0 @@
-package net.koreate.test_java.config;
-
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-@EnableWebMvc
-public class ServletConfig implements WebMvcConfigurer{
-
-}

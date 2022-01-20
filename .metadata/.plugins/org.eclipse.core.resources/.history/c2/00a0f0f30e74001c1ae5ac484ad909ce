@@ -1,9 +1,0 @@
-package net.koreate.test;
-
-public class MySQLConnectTest {
-
-	String driver = "com.mysql.cj.jdbc.Driver";
-	String url = "jdbc:mysql://localhost:3306/smartWeb";
-	String username= "smartWeb";
-	String password = "12345";
-}

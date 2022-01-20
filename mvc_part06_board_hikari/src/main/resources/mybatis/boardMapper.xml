@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- boardMapper.xml -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.koreate.mvc.board.dao.BoardDAO">
+	<insert id="create" parameterType="boardVO">
+		INSERT INTO tbl_board(title,content,writer) VALUES(#{title},#{content},#{writer})
+	</insert>
+	
+	<select id="read" parameterType="int" resultType="boardVO">
+		SELECT * FROM tbl_board WHERE bno = #{bno}
+	</select>
+	
+	<update id="update" parameterType="boardVO">
+		UPDATE tbl_board SET title = #{title}, content = #{content} WHERE bno = #{bno}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM tbl_board WHERE bno = #{bno}
+	</delete>
+	
+	<update id="updateCnt" parameterType="int">
+		UPDATE tbl_board SET viewcnt = viewcnt + 1 WHERE bno = #{bno}
+	</update>
+	
+	<select id="listCount" resultType="int">
+		SELECT count(*) FROM tbl_board
+	</select>
+	
+	<select id="list" parameterType="criteria" resultType="boardVO">
+		SELECT * FROM tbl_board ORDER BY bno DESC limit #{startRow}, #{perPageNum}
+	</select>
+</mapper>

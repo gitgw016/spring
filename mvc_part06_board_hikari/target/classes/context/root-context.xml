@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- location 위치에 있는 properties 파일을 읽어들여 key/value 한쌍의 Properties 객체로 변환 -->
+	<!-- EL 형태로 key를 제공하면 value값을 가져옴 -->
+	<context:property-placeholder location="classpath:properties/*.properties"/>
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- HikariCP Initialization -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<!-- 동시 요청 시 최대 유지할 풀의 커넥션 객체 수 default = 10 -->
+		<property name="maximumPoolSize" value="200"/>
+		<!-- 일을 하지 않아도 유지되는 최소 커넥션 갯수 -->
+		<property name="minimumIdle" value="20"/>
+		<!-- pool에서 커넥션을 가지고 오기 위해 대기하는 시간 default 250ms -->
+		<property name="connectionTimeout" value="30000"/>
+		<!-- pool에서 일을 안하는 커넥션 객체의 자원을 반납대기하는 시간 default 60000ms -->
+		<property name="idleTimeout" value="200000"/>
+	</bean>
+		
+	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+		<constructor-arg ref="hikariConfig"/>
+	</bean>
+	
+	<bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"/>
+		<property name="typeAliasesPackage" value="net.koreate.mvc.*.vo, net.koreate.mvc.common.util"/>
+		<property name="mapperLocations" value="classpath:mybatis/*Mapper.xml"/>
+	</bean>
+	
+	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="factory"/>
+	</bean>
+	
+	<!--
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="net.koreate.mvc.board.dao.BoardDAO"/>
+		<property name="sqlSessionFactory" ref="factory"/>
+		<property name="sqlSessionTemplate" ref="ss"/>
+	</bean>
+	 -->
+	 
+	 <mybatis-spring:scan base-package="net.koreate.mvc.*.dao"/>
+	<!-- <context:component-scan base-package="net.koreate.mvc.board.dao"/> -->
+	
+</beans>

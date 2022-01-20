@@ -1,8 +1,0 @@
-package net.koreate.controller.home;
-
-public class SampleController {
-
-	public SampleController() {
-		System.out.println("SampleController 생성");
-	}
-}

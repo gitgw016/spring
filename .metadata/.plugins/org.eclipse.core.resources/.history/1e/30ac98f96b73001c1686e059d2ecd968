@@ -1,7 +1,0 @@
-package net.koreate.filter;
-
-import javax.servlet.Filter;
-
-public class PrintLogFilter implements Filter{
-
-}

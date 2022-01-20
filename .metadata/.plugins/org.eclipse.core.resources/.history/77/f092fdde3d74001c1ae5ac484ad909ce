@@ -1,9 +1,0 @@
-package net.koreate.test_java.config;
-
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-// WebApplicationInitializer를 상속하면 servlet container(tomcat)가 실행될때 onStart 메소드가 자동으로 호출
-// 이 클래스는 web.xml(배포 서술자)의 역할을 대신하거나 보충함.
-public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
-
-}
