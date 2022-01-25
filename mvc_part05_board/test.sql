@@ -24,6 +24,27 @@ CREATE TABLE tbl_board(
 DESC tbl_board;
 commit;
 
-SELECT * FROM tbl_board ORDER BY bno DESC;
+SELECT * FROM tbl_board ORDER BY bno ASC;
 
 INSERT INTO tbl_board(title,content,writer) SELECT title,content,writer FROM tbl_board;
+
+CREATE TABLE tbl_comment(
+	cno INT PRIMARY KEY auto_increment,
+	bno INT NOT NULL default 0,
+	commentText TEXT NOT NULL,
+	commentAuth VARCHAR(50) NOT NULL,
+    commentDelete char(1) default 'N',
+	regdate TIMESTAMP NOT NULL default now(),
+	updatedate TIMESTAMP NOT NULL default now(),
+	INDEX(bno),
+	CONSTRAINT fk_tbl_board_bno FOREIGN KEY(bno) REFERENCES tbl_board(bno)
+);
+
+DESC tbl_comment;
+
+SELECT * FROM tbl_board WHERE bno = 1;
+commit;
+SELECT * FROM tbl_comment;
+
+
+

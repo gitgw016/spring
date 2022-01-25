@@ -9,14 +9,16 @@ C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.
 \mvc_part07_lombok\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2402479038.index
 \02_part02_controller\src\main\java
-C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3428571927.index
-\mvc_ex_bootstrap_temp\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3740004065.index
 \mvc_part06_board_hikari\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3960217323.index
 \mvc_part05_board\src\main\java
+C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3428571927.index
+\mvc_ex_bootstrap_temp\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\495444395.index
 \mvc_part05_board\src\main\java
+C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2060259517.index
+\mvc_part06_board_hikari\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3264836720.index
 \mvc_part03_test_db\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2846163115.index
@@ -25,6 +27,10 @@ C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.
 \test\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\412885852.index
 \02_part02_controller\src\main\java
+C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4059560077.index
+\mvc_part08_example_comment\src\main\java
+C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2363424779.index
+\mvc_part08_example_comment\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2330704681.index
 \mvc_part04_java_annotation\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3704183001.index
@@ -37,3 +43,5 @@ C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.
 \02_part02_controller\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2516771541.index
 \mvc_part02_controller\src\main\java
+C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\759855637.index
+\mvc_part09_rest\src\main\java

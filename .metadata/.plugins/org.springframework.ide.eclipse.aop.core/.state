@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="mvc_ex_bootstrap_temp"/>
-<aop-project name="mvc_part02_controller"/>
-<aop-project name="mvc_part03_test_db"/>
 <aop-project name="mvc_part07_lombok"/>
-<aop-project name="mvc_part01_structure"/>
-<aop-project name="mvc_part03_filter"/>
-<aop-project name="mvc_part04_java_annotation"/>
+<aop-project name="mvc_part08_example_comment"/>
 <aop-project name="mvc_part05_board"/>
 <aop-project name="mvc_part06_board_hikari"/>
+<aop-project name="mvc_ex_bootstrap_temp"/>
+<aop-project name="mvc_part03_test_db"/>
+<aop-project name="mvc_part02_controller"/>
+<aop-project name="mvc_part09_rest"/>
+<aop-project name="mvc_part04_java_annotation"/>
+<aop-project name="mvc_part03_filter"/>
+<aop-project name="mvc_part01_structure"/>
 </aop-reference-model>

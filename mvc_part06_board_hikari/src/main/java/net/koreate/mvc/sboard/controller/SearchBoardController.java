@@ -70,12 +70,12 @@ public class SearchBoardController {
 	// /sboard/modifyPage method=get - 수정화면 출력
 	@GetMapping("modifyPage")
 	public ModelAndView modify(int bno, ModelAndView mav, @ModelAttribute("cri") SearchCriteria cri) throws Exception{
-		mav.addObject(service.read(bno));
+		mav.addObject("board",service.read(bno));
 		mav.setViewName("sboard/modifyPage");
 		return mav;
 	}
 	
-	// /sboard/modifyPage method=post - 수정 요청 처리 -> listPㅁge
+	// /sboard/modifyPage method=post - 수정 요청 처리 -> listPage
 	@PostMapping("modifyPage")
 	public ModelAndView modifyPage(SearchBoardVO board, SearchCriteria cri, ModelAndView mav, RedirectAttributes rttr) throws Exception{
 		rttr.addAttribute("page",cri.getPage());

@@ -10,8 +10,10 @@
 					<h3 class="box-title">HOME PAGE</h3>
 				</div>
 				<div class="box-body">
-					<a href="board/listPage">게시판</a>
-					<a href="board/register">게시판 글쓰기</a>
+					<a href="board/listPage" class="btn btn-default">게시판</a>
+					<a href="board/register" class="btn btn-primary">게시판 글쓰기</a>
+					<a href="sboard/register" class="btn btn-warning">검색용 게시판 글쓰기</a>
+					<a href="sboard/listPage" class="btn btn-danger">검색용 게시판 목록</a>
 				</div>
 			</div>
 		</div>
