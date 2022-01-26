@@ -12,4 +12,6 @@
 <typeInfo handle="=mvc_part06_board_hikari/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;net.koreate.mvc.common.service{BoardService.java[BoardService" modifiers="513" timestamp="1642648962591"/>
 <typeInfo handle="=mvc_part08_example_comment/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;net.koreate.mvc.comment.service{CommentService.java[CommentService" modifiers="513" timestamp="1642721239496"/>
 <typeInfo handle="=mvc_part08_example_comment/C:\/Program Files\/Java\/jre1.8.0_311\/lib\/rt.jar=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/javase\/8\/docs\/api\/=/&lt;org.w3c.dom(Comment.class[Comment" modifiers="1537" timestamp="1634688515546"/>
+<typeInfo handle="=mvc_part10_rest_comment/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;net.koreate.comment.service{CommentService.java[CommentService" modifiers="513" timestamp="1643163624470"/>
+<typeInfo handle="=mvc_part10_rest_comment/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;net.koreate.comment.dao{CommentDAO.java[CommentDAO" modifiers="513" timestamp="1643166528420"/>
 </typeInfoHistroy>

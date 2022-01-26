@@ -29,10 +29,10 @@ C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.
 \02_part02_controller\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4059560077.index
 \mvc_part08_example_comment\src\main\java
-C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2363424779.index
-\mvc_part08_example_comment\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2330704681.index
 \mvc_part04_java_annotation\src\main\java
+C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2363424779.index
+\mvc_part08_example_comment\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3704183001.index
 \mvc_part06_board_hikari\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2557467375.index
@@ -45,3 +45,5 @@ C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.
 \mvc_part02_controller\src\main\java
 C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\759855637.index
 \mvc_part09_rest\src\main\java
+C:\Users\kte001\Desktop\workspace\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2772990254.index
+\mvc_part10_rest_comment\src\main\java

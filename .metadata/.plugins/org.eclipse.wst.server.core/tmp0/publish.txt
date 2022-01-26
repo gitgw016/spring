@@ -1,5 +1,6 @@
 #Tomcat publish data
-#Tue Jan 25 15:57:13 KST 2022
-org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\kte001\\.m2\\repository\\org\\springframework\\spring-web\\5.2.19.RELEASE\\spring-web-5.2.19.RELEASE.jar=C\:\\Users\\kte001\\Desktop\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\mvc_part09_rest\\WEB-INF\\lib\\spring-web-5.2.19.RELEASE.jar
+#Wed Jan 26 12:06:20 KST 2022
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\kte001\\.m2\\repository\\org\\springframework\\spring-web\\5.2.19.RELEASE\\spring-web-5.2.19.RELEASE.jar=C\:\\Users\\kte001\\Desktop\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\mvc_part10_rest_comment\\WEB-INF\\lib\\spring-web-5.2.19.RELEASE.jar
 org.eclipse.jst.jee.server\:mvc_part09_rest=C\:\\Users\\kte001\\Desktop\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\mvc_part09_rest
 org.eclipse.jst.jee.server\:mvc_part02_controller=C\:\\Users\\kte001\\Desktop\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\mvc_part02_controller
+org.eclipse.jst.jee.server\:mvc_part10_rest_comment=C\:\\Users\\kte001\\Desktop\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\mvc_part10_rest_comment
