@@ -46,5 +46,32 @@ SELECT * FROM tbl_board WHERE bno = 1;
 commit;
 SELECT * FROM tbl_comment;
 
+CREATE TABLE tbl_user(
+	uno INT PRIMARY KEY auto_increment,		-- 사용자 번호
+    uid VARCHAR(50) NOT NULL UNIQUE,		-- 아이디
+    upw VARCHAR(200) NOT NULL,				-- 비밀번호
+    uname VARCHAR(50) NOT NULL,				-- 이름
+    upoint INT NOT NULL DEFAULT 0			-- 포인트
+);
+
+CREATE TABLE tbl_message(
+	mno INT PRIMARY KEY auto_increment,					-- 메세지 번호
+    targetid VARCHAR(50) NOT NULL,						-- 수신자 아이디
+    sender VARCHAR(50) NOT NULL,						-- 발신자 아이디
+    message TEXT NOT NULL,								-- 메세지
+    opendate TIMESTAMP NULL,							-- 수신확인 시간
+    senddate TIMESTAMP NOT NULL default now(),			-- 발신 시간
+    FOREIGN KEY(targetid) REFERENCES tbl_user(uid),
+    FOREIGN KEY(sender) REFERENCES tbl_user(uid)
+);
 
 
+INSERT INTO tbl_user(uid,upw,uname) VALUES('bmg','123','BMG');
+INSERT INTO tbl_user(uid,upw,uname) VALUES('bmj','123','BMJ');
+INSERT INTO tbl_user(uid,upw,uname) VALUES('ojm','123','OJM');
+
+commit;
+
+SELECT * FROM tbl_user;
+
+SELECT * FROM tbl_message;

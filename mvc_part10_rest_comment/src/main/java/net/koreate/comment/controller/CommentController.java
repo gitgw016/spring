@@ -1,6 +1,8 @@
 package net.koreate.comment.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.koreate.comment.service.CommentService;
 import net.koreate.comment.vo.CommentVO;
+import net.koreate.mvc.common.util.Criteria;
+import net.koreate.mvc.common.util.PageMaker;
 
 @RestController
 @RequestMapping("/comments")
@@ -79,6 +83,29 @@ public class CommentController {
 			entity = new ResponseEntity<>(result,HttpStatus.OK);
 		} catch (Exception e) {
 			entity = new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	// 페이징 처리된 리스트 정보
+	// "comments/"+bno+"/"+page;
+	@GetMapping("/{bno}/{page}")
+	public ResponseEntity<Map<String,Object>> listPage(@PathVariable("bno") int bno, @PathVariable int page){
+		ResponseEntity<Map<String,Object>> entity = null;
+		Map<String, Object> map = new HashMap<>();
+		Criteria cri = new Criteria(page,5);
+		try {
+			// 페이징 처ㅏ리된 게시글 목록
+			List<CommentVO> list = cs.commentListPage(bno, cri);
+			map.put("list", list);
+			// 현재 페이지의 페이징 블럭 정보
+			PageMaker pm = cs.getPageMaker(cri, bno);
+			map.put("pm", pm);
+			entity = new ResponseEntity<>(map,HttpStatus.OK);
+			System.out.println(list);
+			System.out.println(map);
+		} catch (Exception e) {
+			entity = new ResponseEntity<>(map,HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}

@@ -40,12 +40,16 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<CommentVO> commentListPage(int bno, Criteria cri) throws Exception {
-		return null;
+		return dao.listPage(bno, cri);
 	}
 
 	@Override
 	public PageMaker getPageMaker(Criteria cri, int bno) throws Exception {
-		return null;
+		int totalCount = dao.totalCount(bno);
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(totalCount);
+		return pageMaker;
 	}
 
 }

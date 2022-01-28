@@ -24,5 +24,10 @@ public interface CommentDAO {
 	@Update("UPDATE tbl_comment SET commentDelete = 'Y' WHERE cno = #{cno}")
 	int delete(int cno) throws Exception;
 	
+	// @Param : Mybatis 에서 자동으로 map의 key값 찾아내어 값을 들고옴
+	@Select("SELECT * FROM tbl_comment WHERE bno = #{bno} ORDER BY cno DESC limit #{cri.startRow}, #{cri.perPageNum}")
 	List<CommentVO> listPage(@Param("bno") int bno, @Param("cri") Criteria cri) throws Exception;
+
+	@Select("SELECT count(cno) FROM tbl_comment WHERE bno = #{bno}")
+	int totalCount(int bno) throws Exception;
 }
