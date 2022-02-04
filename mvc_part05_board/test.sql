@@ -72,6 +72,18 @@ INSERT INTO tbl_user(uid,upw,uname) VALUES('ojm','123','OJM');
 
 commit;
 
-SELECT * FROM tbl_user;
+SELECT * FROM tbl_user;	
 
 SELECT * FROM tbl_message;
+
+CREATE TABLE ban_ip(
+	ip VARCHAR(50) PRIMARY KEY,
+    cnt INT DEFAULT 1,
+    bandate TIMESTAMP DEFAULT now()
+);
+
+DESC ban_ip;
+
+commit;
+
+SELECT * FROM ban_ip;
