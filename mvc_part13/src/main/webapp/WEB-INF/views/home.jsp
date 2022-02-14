@@ -13,6 +13,7 @@
 		<c:choose>
 			<c:when test="${!empty sessionScope.userInfo}">
 				<span>${userInfo.uname}</span>
+				<a href="board/register">글작성</a>
 				<a href="user/signOut">signOut</a>
 			</c:when>
 			<c:otherwise>
@@ -20,6 +21,7 @@
 				<a href="user/signUp">SignUP</a>
 			</c:otherwise>
 		</c:choose>
+			<a href="board/listReply">답변형 게시판</a>
 	</div>
 	<script>
 		var msg = '${invalidate}';

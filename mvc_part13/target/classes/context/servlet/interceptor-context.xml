@@ -18,13 +18,33 @@
 			<exclude-mapping path="/user/signOut"/>
 			<beans:bean class="net.koreate.common.interceptor.CheckCookieInterceptor"/>
 		</interceptor>
+		
 		<interceptor>
 			<mapping path="/user/signInPost"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
+		
 		<interceptor>
 			<mapping path="/user/signUpPost"/>
 			<beans:bean class="net.koreate.common.interceptor.SignUpInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/board/*"/>
+			<exclude-mapping path="/board/listReply"/>
+			<exclude-mapping path="/board/readPage"/>
+			<exclude-mapping path="/board/read"/>
+			<beans:bean class="net.koreate.common.interceptor.AuthInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/board/read"/>
+			<beans:bean class="net.koreate.common.interceptor.CreateTokenInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/board/remove"/>
+			<beans:bean class="net.koreate.common.interceptor.CheckTokenInterceptor"/>
 		</interceptor>
 	</interceptors>
 </beans:beans>

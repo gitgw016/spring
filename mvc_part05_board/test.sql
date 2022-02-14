@@ -87,3 +87,71 @@ DESC ban_ip;
 commit;
 
 SELECT * FROM ban_ip;
+
+-- 답변형 게시판 table
+CREATE TABLE re_tbl_board(
+	bno INT PRIMARY KEY auto_increment,
+    title VARCHAR(200) NOT NULL,
+    content LONGTEXT NOT NULL,
+    origin INT NOT NULL default 0,
+    depth INT NOT NULL default 0,
+    seq INT NOT NULL default 0,
+    regdate TIMESTAMP NULL DEFAULT now(),
+    updatedate TIMESTAMP NULL DEFAULT now(),
+    viewcnt INT NULL DEFAULT 0,
+    showboard CHAR(1) NULL DEFAULT 'Y',
+    uno INT NOT NULL,
+    CONSTRAINT fk_re_tbl_uno FOREIGN KEY(uno) REFERENCES tbl_user(uno)
+);
+
+INSERT INTO re_tbl_board(bno,title,content,origin,uno) VALUES(1,'배민구','안선다',1,1);
+
+SELECT * FROM re_tbl_board;
+
+SELECT * FROM tbl_user;
+
+SELECT B.*, U.uname AS writer FROM re_tbl_board AS B NATURAL JOIN tbl_user AS U ORDER BY B.bno DESC limit 0,10;
+
+SELECT B.*, U.uname AS writer FROM re_tbl_board AS B NATURAL JOIN tbl_user AS U ORDER BY B.origin DESC , B.seq ASC limit 0,10;
+commit;
+
+-- 첨부파일 목록 저장 table
+CREATE TABLE tbl_attach(
+	fullName VARCHAR(300) NOT NULL,
+    bno INT NOT NULL,
+    regdate TIMESTAMP NULL DEFAULT now(),
+    constraint fk_tbl_attach FOREIGN KEY(bno) REFERENCES re_tbl_board(bno)
+);
+
+DESC tbl_attach;
+
+SELECT * FROM tbl_attach;
+commit;
+SELECT DATE_FORMAT(regdate,'%Y-%m-%d') FROM tbl_attach;
+SELECT DATE_FORMAT(DATE_ADD(now(), interval -1 day), '%Y-%m-%d');
+SELECT fullName FROM tbl_attach WHERE regdate <= DATE_ADD(now(), interval -1 day);
+
+SELECT fullName FROM tbl_attach WHERE DATE_FORMAT(regdate, '%Y-%m-%d') = DATE_FORMAT(DATE_ADD(now(), interval -1 day), '%Y-%m-%d');
+
+SELECT DATE_FORMAT(DATE_SUB(now(),interval 1 day),'/%Y/%m/%d/');
+
+-- 답변형 게시판 댓글 comment
+CREATE TABLE re_tbl_comment(
+	cno INT PRIMARY KEY auto_increment,				-- 댓글 번호
+    bno INT NOT NULL,								-- 게시글 번호
+    commentText TEXT NOT NULL,						-- 댓글 내용
+    regdate TIMESTAMP NOT NULL default now(),		-- 작성 시간
+    updatedate TIMESTAMP NOT NULL default now(),	-- 수정 시간
+    uno INT NOT NULL default 1,						-- 댓글 작성자
+    CONSTRAINT fk_re_tbl_bno FOREIGN KEY(bno) REFERENCES re_tbl_board(bno),
+    CONSTRAINT fk_re_tbl_comment_uno FOREIGN KEY(uno) REFERENCES tbl_user(uno)
+);
+
+DESC re_tbl_comment;
+INSERT INTO re_tbl_comment(bno,commentText,uno) VALUES(1,'배민재는 두번째 응가다',1);
+
+drop TABLE re_tbl_comment;
+commit;
+SELECT * FROM re_tbl_comment;
+SELECT C.*, U.uname AS commentAuth FROM re_tbl_comment AS C NATURAL JOIN tbl_user AS U WHERE bno = 1 ORDER BY cno  DESC LIMIT 0, 10;
+SELECT C.*, U.uname AS commentAuth FROM re_tbl_comment AS C NATURAL JOIN tbl_user AS U WHERE bno = 2 ORDER BY cno  DESC LIMIT 0, 10;

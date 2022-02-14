@@ -57,6 +57,9 @@ public class FileController {
 		return "home";
 	}
 	
+	@GetMapping("uploadAjax")
+	public void uploadAjax() {}
+	
 	@GetMapping("uploadForm")
 	public void uploadForm() {
 		
