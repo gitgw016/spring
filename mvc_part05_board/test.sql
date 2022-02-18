@@ -155,3 +155,7 @@ commit;
 SELECT * FROM re_tbl_comment;
 SELECT C.*, U.uname AS commentAuth FROM re_tbl_comment AS C NATURAL JOIN tbl_user AS U WHERE bno = 1 ORDER BY cno  DESC LIMIT 0, 10;
 SELECT C.*, U.uname AS commentAuth FROM re_tbl_comment AS C NATURAL JOIN tbl_user AS U WHERE bno = 2 ORDER BY cno  DESC LIMIT 0, 10;
+
+commit;
+SELECT * FROM tbl_attach;
+SELECT * FROM re_tbl_comment;
