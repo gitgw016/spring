@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.koreate.sec.dao.MemberDAO">
+
+	<resultMap id="memberMap" type="net.koreate.sec.vo.ValidationMemberVO">
+		<id property="u_id" column="u_id"/>
+		<result property="u_no" column="u_no"/>
+		<result property="u_id" column="u_id"/>
+		<result property="u_pw" column="u_pw"/>
+		<result property="u_profile" column="u_profile"/>
+		<result property="u_phone" column="u_phone"/>
+		<result property="u_name" column="u_name"/>
+		<result property="u_birth" column="u_birth"/>
+		<result property="u_post" column="u_post"/>
+		<result property="u_addr" column="u_addr"/>
+		<result property="u_addr_detail" column="u_addr_detail"/>
+		<result property="u_point" column="u_point"/>
+		<result property="u_info" column="u_info"/>
+		<result property="u_date" column="u_date"/>
+		<result property="u_visit_date" column="u_visit_date"/>
+		<result property="u_withdraw" column="u_withdraw"/>
+		
+		<collection property="authList" resultMap="authMap"/>
+	</resultMap>
+	
+	<resultMap id="authMap" type="net.koreate.sec.vo.AuthVO">
+		<result property="u_id" column="u_id"/>
+		<result property="u_auth" column="u_auth"/>
+	</resultMap>
+
+	<insert id="memberJoin" parameterType="net.koreate.sec.vo.ValidationMemberVO">
+		INSERT INTO validation_member(u_profile,u_id,u_pw,u_phone,u_birth,u_name,u_post,u_addr,u_addr_detail)
+		 VALUES(#{u_profile},#{u_id},#{u_pw},#{u_phone},#{u_birth},#{u_name},#{u_post},#{u_addr},#{u_addr_detail})
+	</insert>
+	
+	<!-- resultType="net.koreate.sec.vo.ValidationMemberVO" -->
+	<select id="getMemberByID" parameterType="java.lang.String" resultMap="memberMap">
+		SELECT member.*, u_auth FROM validation_member AS member LEFT OUTER JOIN validation_member_auth AS mauth on member.u_id = mauth.u_id WHERE member.u_id = #{u_id} AND u_withdraw = 'n';
+	</select>
+	
+	<!-- void insertAuth(String u_id) throws Exception; -->
+	<insert id="insertAuth" parameterType="String">
+		INSERT INTO validation_member_auth(u_id,u_auth) VALUES(#{u_id}, 'ROLE_USER')
+	</insert>
+
+	<!-- void updateVisitDate(String u_id); -->
+	<update id="updateVisitDate" parameterType="String">
+		UPDATE validation_member SET u_visit_date = now() WHERE u_id = #{u_id}
+	</update>
+	
+	<!-- 회원 목록 -->
+	<!-- List<ValidationMemberVO> getMemberList() throws Exception; -->
+	<select id="getMemberList" resultMap="memberMap">
+		SELECT member.*, u_auth FROM validation_member AS member LEFT OUTER JOIN validation_member_auth AS mauth on member.u_id = mauth.u_id ORDER BY u_no DESC;
+	</select>
+	
+	<update id="deleteYN" parameterType="net.koreate.sec.vo.ValidationMemberVO">
+		UPDATE validation_member SET u_withdraw = #{u_withdraw} WHERE u_id = #{u_id}
+	</update>
+	
+	<select id="getAuthList" parameterType="String" resultType="net.koreate.sec.vo.AuthVO">
+		SELECT * FROM validation_member_auth WHERE u_id = #{u_id}
+	</select>
+	
+	<!-- void insertMemberAuth(AuthVO vo) throws Exception; -->
+	<insert id="insertMemberAuth" parameterType="net.koreate.sec.vo.AuthVO">
+		INSERT INTO validation_member_auth VALUES(#{u_id}, #{u_auth})
+	</insert>
+
+	<!-- void deleteAuth(AuthVO auth) throws Exception; -->
+	<delete id="deleteAuth" parameterType="net.koreate.sec.vo.AuthVO">
+		DELETE FROM validation_member_auth WHERE u_id = #{u_id} AND u_auth = #{u_auth}
+	</delete>
+</mapper>
+
+
+

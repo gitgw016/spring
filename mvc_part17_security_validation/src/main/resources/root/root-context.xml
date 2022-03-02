@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+		<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:property-placeholder location="classpath:properties/*.properties"/>
+	
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<!-- 최대 유지 할 수 있는 커넥션 개수 default=10 -->
+		<property name="maximumPoolSize" value="200"/>
+		<!-- 일을 하지 않아도 유지하는 최소 connection 개수 -->
+		<property name="minimumIdle" value="20"/>
+		<!-- pool 에서 connection 정보를 가져오는 최소 시간 default= 250ms -->
+		<property name="connectionTimeout" value="300000"/>		
+		<!-- pool에서 일을 안하는 커넥션을 대기(유지) 하는 시간 default=60000ms -->
+		<property name="idleTimeout" value="200000"/>
+	</bean>
+	
+	
+	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+		<constructor-arg ref="hikariConfig"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"/>
+	</bean>	
+	
+	<mybatis-spring:scan base-package="net.koreate.sec.dao"/>
+	
+	<bean id="transactionManager" 
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"/>
+	</bean>
+	
+	<tx:annotation-driven/>
+	
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	<bean id="uploadPath" class="java.lang.String">
+		<constructor-arg value="upload"/>
+	</bean>
+	
+	<context:component-scan base-package="net.koreate.sec.service"/>	
+	
+	<!-- 이름이 중요하다 -->
+	<bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760"/>
+		<property name="defaultEncoding" value="utf-8"/>
+	</bean>
+	
+	<bean id="chatHandler" class="net.koreate.sec.util.ChatHandler"/>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler" path="/chatHandler"/>
+		<websocket:sockjs />
+	</websocket:handlers>
+	
+	<bean id="chatImageHandler" class="net.koreate.sec.util.ChatImageHandler"/>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="chatImageHandler" path="/chatImageHandler/**"/>
+		<websocket:sockjs />
+	</websocket:handlers>
+</beans>
+
+
+
+
+

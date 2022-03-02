@@ -159,3 +159,57 @@ SELECT C.*, U.uname AS commentAuth FROM re_tbl_comment AS C NATURAL JOIN tbl_use
 commit;
 SELECT * FROM tbl_attach;
 SELECT * FROM re_tbl_comment;
+
+CREATE TABLE validation_member(
+	u_no INT PRIMARY KEY auto_increment,
+    u_profile VARCHAR(200) NULL,
+    u_id VARCHAR(100) NOT NULL UNIQUE,
+    u_pw VARCHAR(200) NOT NULL,
+    u_phone VARCHAR(20) NOT NULL,
+    u_name VARCHAR(20) NOT NULL,
+    u_birth VARCHAR(20) NOT NULL,
+    u_post VARCHAR(20) NOT NULL,
+    u_addr VARCHAR(50) NOT NULL,
+    u_addr_detail VARCHAR(50) NOT NULL,
+    u_point INT DEFAULT 0,
+    u_info char(1) default 'y',
+    u_date TIMESTAMP NOT NULL DEFAULT now(),
+    u_visit_date TIMESTAMP NOT NULL DEFAULT now(),
+    u_withdraw char(1) DEFAULT 'n'
+);
+
+DESC validation_member;
+
+-- 사용자에게 부여된 권한을 저장할 테이블
+CREATE TABLE validation_member_auth(
+	u_id VARCHAR(50) NOT NULL,
+    u_auth VARCHAR(50) NOT NULL,
+    CONSTRAINT fk_member_auth FOREIGN KEY(u_id) REFERENCES validation_member(u_id)
+);
+
+commit;
+SELECT * FROM validation_member;
+
+INSERT INTO validation_member_auth (u_id,u_auth) VALUES('mingu@norise.net','ROLE_MASTER');
+INSERT INTO validation_member_auth (u_id,u_auth) VALUES('mingu@norise.net','ROLE_MEMBERSHIP');
+INSERT INTO validation_member_auth (u_id,u_auth) VALUES('mingu@norise.net','ROLE_USER');
+
+commit;
+
+SELECT * FROM validation_member_auth WHERE u_id = 'mingu@norise.net';
+
+SELECT member.*, u_auth FROM validation_member AS member LEFT OUTER JOIN validation_member_auth AS mauth on member.u_id = mauth.u_id WHERE member.u_id = "mingu@norise.net" AND u_withdraw = 'n';
+
+SELECT member.*, u_auth FROM validation_member AS member LEFT OUTER JOIN validation_member_auth AS mauth on member.u_id = mauth.u_id WHERE u_withdraw = 'n';
+
+CREATE TABLE test_members(
+	userid VARCHAR(50) NOT NULL,
+    userpw VARCHAR(45) NOT NULL,
+    username VARCHAR(45) NOT NULL,
+    email VARCHAR(45) NOT NULL,
+    regdate TIMESTAMP NOT NULL default now(),
+    updatedate TIMESTAMP NOT NULL default now()
+);
+
+commit;
+desc test_members;

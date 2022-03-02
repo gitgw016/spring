@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 암호화를 사용하지 않음 -->
+	<!-- <bean class="org.springframework.security.crypto.password.NoOpPasswordEncoder"/> -->
+	
+	<!-- sha-256 암호화 방식 -->
+	<!-- <bean class="org.springframework.security.crypto.password.StandardPasswordEncoder"/> -->
+	
+	<!-- scrypt 해쉬 알고리즘 소수를 이용한 암호화 방식 -->
+	<!-- BCrypt -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	
+	<bean id="customUserService" class="net.koreate.sec.security.user.CustomUserDetailService"/>
+	
+	<bean id="loginSuccessHandler" class="net.koreate.sec.security.LoginSuccessHandler"/>
+	
+	<bean id="loginFailHandler" class="net.koreate.sec.security.CustomLoginFailHandler"/>
+	
+	<bean id="accessDeniedHandler" class="net.koreate.sec.security.CustomAccessDeniedHandler"/>
+	<security:http pattern="/resources/**" security="none"/>
+	<security:http auto-config="true">
+		<!-- 권한 불충분 handler -->
+		<security:access-denied-handler ref="accessDeniedHandler"/>
+		<!-- csrf token 사용안함 -->
+		<!-- <security:csrf disabled="true"/> -->
+		<security:form-login login-page="/user/login" username-parameter="u_id" password-parameter="u_pw" login-processing-url="/user/login"
+		 authentication-success-handler-ref="loginSuccessHandler"
+		 authentication-failure-handler-ref="loginFailHandler"/>
+		 
+		 <!-- 자동 로그인 default = remember-me -->
+		<security:remember-me remember-me-cookie="userCookie" remember-me-parameter="rememberme" token-validity-seconds="604800"/>
+		
+		<!-- 이미 로그인 한 대상이 있을 경우 2차 로그인 방지 : error-if-maximum-exceeded="true" -->
+		<!-- 기존 연결을 끊고 로그인 : error-if-maximum-exceeded="false" -->
+		<security:session-management>
+			<security:concurrency-control error-if-maximum-exceeded="false" max-sessions="1" expired-url="/logOff"/>
+		</security:session-management>
+		
+		<security:logout logout-url="/user/logout" logout-success-url="/" delete-cookies="userCookie, JSESSIONID"/>
+		<!-- 좁은 범위 먼저 작성 -->
+		<security:intercept-url pattern="/mngt/user/**" access="hasRole('ROLE_MASTER')"/>
+		<security:intercept-url pattern="/mngt/**" access="hasAnyRole('ROLE_MEMBERSHIP','ROLE_MASTER')" />
+		<!-- 무한 재요청 -> 브라우저 자동 종료 -->
+		<!-- <security:intercept-url pattern="/**" access="isAuthenticated()" /> -->
+		<security:intercept-url pattern="/user/logout" access="authenticated" />
+		<security:intercept-url pattern="/user/**" access="isAnonymous()" />
+		<security:intercept-url pattern="/logOff" access="isAnonymous()" />
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/**" access="authenticated" />
+		
+	</security:http>
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="customUserService">
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>
